@@ -3,7 +3,7 @@
         <div>
             <a href="/" ><img src="@/assets/1838801.svg"> </a>
             <h1 id="welcome">Welcome to QuizShroom!</h1>
-            <h1 id="help">Login with your school credentials!</h1>
+            
             <h4>Hint: It is "username" and then "password"</h4>
         </div>
         <div id="login">
@@ -51,7 +51,7 @@
 <style scoped>
     #login {
         width: 500px;
-        border: 5px solid mediumvioletred;;
+        border: 5px solid #cf2d2d;;
         background-color: #FFFFFF;
         font-weight: bold;
         color: #2c3e50;
@@ -59,9 +59,9 @@
         padding: 15px;
     }
     #welcome {
-        color: orangered;
+        color: #cf2d2d;
     }
     #help {
-        color: purple;
+        color: #cf2d2d;
     }
 </style>

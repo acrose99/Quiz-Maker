@@ -2,6 +2,7 @@
 <v-app>
 
   <Nav/>
+  <div class="bigPapa">
 <div
 v-for="(x,idx) in surveys" :key="idx">
 
@@ -31,15 +32,19 @@ v-for="(x,idx) in surveys" :key="idx">
 
 
   </v-card>
+  
   </div>
+        <router-link class="routerLink" to="/">  <v-btn class='btn'>
+       Home
+                 </v-btn></router-link> 
   </div>
 
 </div>
 
       
-      <router-link class="routerLink" to="/">  <v-btn class='btn'>
-       Home
-                 </v-btn></router-link> 
+
+
+  </div>
             
 </v-app>
 </template>
@@ -82,11 +87,23 @@ export default {
 </script>
 
 <style>
+.bigPapa{
+  position: absolute;
+  margin-top: 50px;
+  left: 20%;
+  right: 20%;
+}
 .quizzys{
-  margin-top: -50%;
+  position:absolute;
+  top:20px;
+  left:20%;
+  right:20%;
+
 }
 
 .btn{
-  margin-top: -50%;
+  position:relative;
+  bottom:0px;
+  margin: 20px;
 }
 </style>

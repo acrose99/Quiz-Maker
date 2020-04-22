@@ -7,11 +7,7 @@
             <v-text-field class="enterQuestion" outlined v-model="question" placeholder="Please enter your question" ></v-text-field>
              <v-text-field class="enterQuestion" outlined v-model="answer" placeholder="Enter the correct answer" ></v-text-field>
           </div>
-          
-            <v-btn class="large" @click="addChoice">Add Option</v-btn>
-            <p> One option needs to be the correct answer </p>
-            <v-btn class="large" @click="saveQuestion"> Save Question</v-btn>
-            <p> Allows you to also add a new question </p>
+
         </div>
 
 
@@ -24,12 +20,16 @@
       </div>
 
       <div class="remove">
-        <v-btn class="button is-large" @click.stop="removeChoice(choice)"> Remove this choice </v-btn>
+        <v-btn class="button is-large" @click.stop="removeChoice(choice)"> Remove this option </v-btn>
       </div>
     </v-card>
 
-
-  
+        <div class = "addSave">  
+            <v-btn class="large" @click="addChoice">Add Option</v-btn>
+            <p> One option needs to be the correct answer </p>
+            <v-btn class="large" @click="saveQuestion"> Save Question</v-btn>
+            <p> Allows you to also add a new question </p>
+        </div> 
        </div>
     </v-app>
     </div>
@@ -75,6 +75,14 @@ data(){
 
 <style scoped>
 
+.addSave{
+  position: relative;
+  bottom:0px;
+  margin:20px;
+  padding:10px;
+  
+
+}
 .v-card{
    margin-left: auto;
     margin-right: auto;

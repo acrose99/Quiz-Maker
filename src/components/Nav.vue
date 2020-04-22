@@ -3,11 +3,6 @@
         <div>
 
 
-            <v-app-bar
-                    absolute
-                    color="#5E35B1"
-                    dark
-                    elevate-on-scroll=======
     <v-app-bar
       absolute
       color="#cf2d2d" 
@@ -21,14 +16,14 @@
                 <img src="@/assets/mushy_yt.png"/>
 
 
-                <v-toolbar-title>QuizShroom</v-toolbar-title>
+                <router-link class="routerLink" to="/"> <v-toolbar-title>QuizShroom</v-toolbar-title></router-link>
                 <v-spacer/>
+                
+                <router-link class = "routerLink" to = "/create-quiz"> Create A Quiz </router-link>
+                <router-link  class="routerLink" to="/default-quiz">Use Quiz Template</router-link>
+                <router-link  class="routerLink" to="/surveys/1">Survey</router-link>
                 <router-link class="routerLink" to="/Login">Logout</router-link>
-                <router-link class="routerLink" to="/"> Home</router-link>
 
-
-                <router-link  class="routerLink" to="/default-quiz">Use quiz template</router-link>
-                <router-link  class="routerLink" to="/surveys">survey</router-link>
 
 
 
@@ -64,6 +59,7 @@
 
 .routerLink{
      text-decoration: none;
+     font-size: 32px;
      margin: 25px;
     
       font-size: small;

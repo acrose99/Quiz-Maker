@@ -1,7 +1,7 @@
   <template>
   <v-app>
       <Nav/>
-  <div style = "margin:0px; background-color:red;">
+  <div style = "margin:0px;">
       <div class = "create">
         <div v-if="this.review== false">
       <!--   <div>
@@ -26,7 +26,7 @@
           <CreateQuestions v-on:questionComplete="appendQuestion"/>
         </v-card>
 
-          <v-btn  @click="reviewQuiz">
+          <v-btn class = "reviewQuiz" @click="reviewQuiz">
           Review Your quiz (please save quiz first!)
         </v-btn>
         </div>
@@ -41,7 +41,7 @@
         <v-card v-for="(x,idx) in questions" :key="idx" >
          {{x}}
         </v-card>
-        <v-btn @click="submitQuiz">
+        <v-btn  class = "submitQuiz" @click="submitQuiz">
           Submit Quiz
         </v-btn>
         </div>
@@ -109,7 +109,7 @@ data(){
 <style scoped>
 .create{
   position:absolute;
-  background-color:darkkhaki;
+  
   top: 100px;
   left:20%;
   right: 20%;
@@ -131,10 +131,19 @@ data(){
      margin: 25px;
      
 }
+.reviewQuiz{
+  margin-top:30px;
+  margin-bottom:10px;
 
+}
 .nameQuiz{
   position: relative;
  
+
+}
+
+.submitQuiz{
+margin-top:30px;
 
 }
 
