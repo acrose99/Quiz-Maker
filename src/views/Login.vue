@@ -3,8 +3,7 @@
         <div>
             <a href="/" ><img src="@/assets/1838801.svg"> </a>
             <h1 id="welcome">Welcome to QuizShroom!</h1>
-            
-            <h4>Hint: It is "username" and then "password"</h4>
+            <h4>Hint: It's username and password</h4>
         </div>
         <div id="login">
             <label id="username">
@@ -37,6 +36,7 @@
                         this.$router.replace({ name: "Home" });
                     } else {
                         // eslint-disable-next-line no-console
+                        window.alert("Bruh Moment, please enter a correct username and password");
                         console.log("The username and / or password is incorrect");
                     }
                 } else {
