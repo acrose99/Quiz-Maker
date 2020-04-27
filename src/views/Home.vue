@@ -3,8 +3,9 @@
     <div class="home">
         
        <h1> Welcome to the quiz app! </h1>
-        <a onclick="changeImage()" ><img id="logo" @onclick="changeImage" src="@/assets/mushy.png"> </a>
-
+        <router-link class="routerLink" to="/Home">
+         <img src="@/assets/mushy.png">
+        </router-link>
     
       <router-link class="routerLink" to="/create-quiz">
       <v-btn x-large color="#cf2d2d"
@@ -46,27 +47,18 @@
 <script>
 import { mapState } from 'vuex'
 
+
 export default {
     name: 'home',
     computed: mapState({
     surveys: state => state.surveys
   }),
-    data() {
-        return {
-        image1: '@/assets/mushy.png',
-        image2: '@/assets/mushroom.png'
-      }
-    },
-    beforeMount(){
+  beforeMount(){
       
       this.$store.dispatch('loadSurveys')
       
-    },
-    methods: {
-        changeImage() {
-            this.image1 = this.image2
-        }
-    }
+  }
+    
 }
 </script>
 

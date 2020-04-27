@@ -1,15 +1,14 @@
 <template>
 <div>
     <v-app>
-       <div>
+      
         <div class="newQuestion">
           <div class = "newQ">
             <v-text-field class="enterQuestion" outlined v-model="question" placeholder="Please enter your question" ></v-text-field>
              <v-text-field class="enterQuestion" outlined v-model="answer" placeholder="Enter the correct answer" ></v-text-field>
           </div>
 
-        </div>
-
+   
 
         <h2 class="large" v-show="choices.length > 0">Question Choices</h2>
 
@@ -107,13 +106,17 @@ data(){
      
 }
 
-/* TODO: Center question and answer input */
+
 .newQuestion{
     position: relative;
-    margin:auto;
-    width: 420px;
+    margin-left: 10px;
+    margin-right: 10px;
+    width:  400px;
+
     height: auto;
     top: 20px;
+   
+    
 }
 
 .newQ{
