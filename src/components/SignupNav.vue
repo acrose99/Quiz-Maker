@@ -19,11 +19,9 @@
                     <v-toolbar-title>QuizShroom</v-toolbar-title>
                 </router-link>
                 <v-spacer/>
-
-                <router-link class="routerLink" to="/create-quiz"> Create A Quiz</router-link>
-                <router-link class="routerLink" to="/default-quiz">Use Quiz Template</router-link>
-                <router-link class="routerLink" to="/surveys/1">Survey</router-link>
-                <router-link class="routerLink" to="/Login">Logout</router-link>
+                <router-link class="routerLink" to="/Login">
+                    <v-toolbar-title>Login with your Account</v-toolbar-title>
+                </router-link>
 
 
             </v-app-bar>
