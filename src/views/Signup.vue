@@ -1,17 +1,12 @@
 <template>
     <v-app>
-    <SignupNav id="navbar"/>
-    <div style="margin:0px" id="main-container">
-        <div>
-            <v-img id="village" src="@/assets/1594701.svg" aspect-ratio="4" contain="tr"></v-img>
-        </div>
-        <h3 id="welcome">Make QuizShroom your Educational Home!</h3>
-        <v-app id="signup">
-            <v-form
-                    ref="form"
-                    v-model="valid"
-                    lazy-validation
-            >
+        <SignupNav id="navbar"/>
+        <div id="main-container">
+            <div>
+                <v-img id="village" src="@/assets/1594701.svg" aspect-ratio="4" contain="tr"></v-img>
+            </div>
+            <h3 id="welcome">Make QuizShroom your Educational Home!</h3>
+            <v-form id="signup" v-model="valid" ref="form" lazy-validation>
                 <v-text-field
                         v-model="name"
                         :counter="30"
@@ -19,28 +14,23 @@
                         label="Name"
                         required
                 ></v-text-field>
-
-                <v-text-field
-                        v-model="email"
-                        :counter="30"
-                        :rules="emailRules"
-                        label="E-mail"
-                        required
-                ></v-text-field>
-
-                <v-text-field
+                <v-text-field v-model="username" :rules="emailRules" label="Email Address" required/>
+                <v-text-field id="password"
                         v-model="password"
-                        :rules="passwordRules"
+                        :rules="[passwordRules.required, passwordRules.min]"
+                        :type="passwordVisible ? 'text' : 'password'"
+                        name="password"
                         label="Password"
-                        required
-                ></v-text-field>
-                <v-text-field
-                        v-model="password"
-                        :rules="passwordRules"
+                        hint="At least 8 characters"
+                        counter
+                        required/>
+                <v-text-field id="confirm-password"
+                        v-model="confirmpassword"
+                        :rules="[passwordRules.required, passwordRules.min]"
+                        name="confirm-password"
                         label="Confirm Password"
-                        required
-                ></v-text-field>
-
+                        counter
+                        required/>
                 <v-checkbox
                         v-model="checkbox"
                         :rules="[v => !!v || 'You must agree to continue!']"
@@ -52,9 +42,9 @@
                         :disabled="!valid"
                         color="success"
                         class="mr-4"
-                        @click="validate"
+                        @click="submit"
                 >
-                    Validate
+                    Sign-UP!
                 </v-btn>
 
                 <v-btn
@@ -65,60 +55,66 @@
                     Reset Form
                 </v-btn>
 
-<!--                <v-btn-->
-<!--                        color="warning"-->
-<!--                        @click="resetValidation"-->
-<!--                >-->
-<!--                    Reset Validation-->
-<!--                </v-btn>-->
+
+                <!--                <v-btn-->
+                <!--                        color="warning"-->
+                <!--                        @click="resetValidation"-->
+                <!--                >-->
+                <!--                    Reset Validation-->
+                <!--                </v-btn>-->
             </v-form>
-        </v-app>
-    </div>
+        </div>
+        <router-link class="routerLink" to="/signupconfirm">
+            <v-btn x-large color="#cf2d2d"
+                   class="ma-2 white--text">
+
+
+                Confirm
+            </v-btn>
+        </router-link>
     </v-app>
 </template>
 
 <script>
     import SignupNav from "../components/SignupNav";
 
-    export default({
+    export default {
         name: 'Signup',
-        components:{
+        components: {
             SignupNav,
         },
-        data: () => ({
-            valid: true,
-            name: '',
-            nameRules: [
-                v => !!v || 'Name is required',
-                v => (v && v.length <= 10) || 'Name must be less than 10 characters',
-            ],
-            email: '',
-            emailRules: [
-                v => !!v || 'E-mail is required',
-                v => /.+@.+\..+/.test(v) || 'E-mail must be valid',
-            ],
-            select: null,
-            items: [
-                'Item 1',
-                'Item 2',
-                'Item 3',
-                'Item 4',
-            ],
-            checkbox: false,
-        }),
-
-        methods: {
-            validate () {
-                this.$refs.form.validate()
+        data() {
+            return {
+                valid: false,
+                username: '',
+                password: '',
+                confirmpassword: '',
+                passwordVisible: false,
+            }
+        },
+        computed: {
+            emailRules() {
+                return [
+                    v => !!v || 'E-mail is required',
+                    v => /.+@.+/.test(v) || 'E-mail must be valid'
+                ]
             },
-            reset () {
-                this.$refs.form.reset()
-            },
-            resetValidation () {
-                this.$refs.form.resetValidation()
+            passwordRules() {
+                return {
+                    required: value => !!value || 'Required.',
+                    min: v => v.length >= 8 || 'Min 8 characters',
+                    emailMatch: () => ('The email and password you entered don\'t match'),
+                }
             },
         },
-    })
+        methods: {
+            submit() {
+                if (this.$refs.form.validate()) {
+                    console.log(`SIGN UP username: ${this.username}, password: ${this.password}, email: ${this.username}`);
+                }
+            },
+        },
+    }
 </script>
 
 <style>
@@ -146,10 +142,11 @@
     #welcome {
         color: #cf2d2d;
     }
+
     #main-container {
-        position:fixed;
+        position: fixed;
         top: 100px;
-        left:20%;
+        left: 20%;
         right: 20%;
     }
 
