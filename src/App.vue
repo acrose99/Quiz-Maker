@@ -17,7 +17,7 @@
     },
     mounted() {
       if(!this.authenticated) {
-        this.$router.replace({ name: "Signup" });
+        this.$router.replace({ name: "signup" });
       }
     }
   }

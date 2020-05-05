@@ -71,7 +71,7 @@ router.beforeResolve(async (to, from, next) => {
   if (!user) {
     if (to.matched.some((record) => record.meta.requiresAuth)) {
       return next({
-        path: '/signin',
+        path: '/signup',
       })
     }
   } else {

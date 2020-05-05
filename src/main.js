@@ -11,8 +11,6 @@ import {Auth} from "@aws-amplify/auth";
 Amplify.configure(aws_exports)
 Vue.use(AmplifyPlugin, AmplifyModules);
 
-Amplify.configure(aws_exports)
-
 Vue.use(Auth, AmplifyPlugin, AmplifyModules);
 
 Vue.config.productionTip = false
