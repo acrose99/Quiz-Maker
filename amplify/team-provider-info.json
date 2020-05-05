@@ -1,0 +1,20 @@
+{
+    "dev": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-quizshroom-dev-203900-authRole",
+            "UnauthRoleArn": "arn:aws:iam::915176356595:role/amplify-quizshroom-dev-203900-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::915176356595:role/amplify-quizshroom-dev-203900-authRole",
+            "Region": "us-east-2",
+            "DeploymentBucketName": "amplify-quizshroom-dev-203900-deployment",
+            "UnauthRoleName": "amplify-quizshroom-dev-203900-unauthRole",
+            "StackName": "amplify-quizshroom-dev-203900",
+            "StackId": "arn:aws:cloudformation:us-east-2:915176356595:stack/amplify-quizshroom-dev-203900/de495e40-8cde-11ea-a65c-0aeddbb89fe2",
+            "AmplifyAppId": "d39l3x322aduiz"
+        },
+        "categories": {
+            "auth": {
+                "quizshroome902fa2a": {}
+            }
+        }
+    }
+}

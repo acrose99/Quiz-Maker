@@ -1,0 +1,10 @@
+{
+	"auth": {
+		"quizshroome902fa2a": {
+			"service": "Cognito",
+			"providerPlugin": "awscloudformation",
+			"dependsOn": [],
+			"customAuth": false
+		}
+	}
+}
