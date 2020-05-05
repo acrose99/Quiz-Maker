@@ -46,7 +46,7 @@ getUser().then((user) => {
 AmplifyEventBus.$on('authState', async (state) => {
   const pushPathes = {
     signedOut: () => {
-      router.push({path: '/signIn'})
+      router.push({path: '/signin'})
     },
     signUp: () => {
       router.push({path: '/signUp'})
@@ -71,7 +71,7 @@ router.beforeResolve(async (to, from, next) => {
   if (!user) {
     if (to.matched.some((record) => record.meta.requiresAuth)) {
       return next({
-        path: '/signIn',
+        path: '/signin',
       })
     }
   } else {

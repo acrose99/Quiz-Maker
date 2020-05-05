@@ -1,9 +1,8 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-view @authenticated="setAuthenticated" />
+      <router-view @authenticated="false" />
     </div>
-    <router-view/>
   </div>
 </template>
 

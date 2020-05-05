@@ -3,7 +3,7 @@
         <SignupNav id="navbar"/>
         <div id="main-container">
             <div>
-                <v-img id="village" src="@/assets/1594701.svg" aspect-ratio="4" contain="tr"></v-img>
+                <v-img id="village" src="@/assets/1594701.svg" aspect-ratio="4" :contain="true"></v-img>
             </div>
             <div class="signup">
                 <h3 id="welcome">Make QuizShroom your Educational Home!</h3>
