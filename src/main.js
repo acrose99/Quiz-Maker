@@ -6,9 +6,9 @@ import store from './store'
 
 import Amplify, * as AmplifyModules from 'aws-amplify';
 import { AmplifyPlugin } from 'aws-amplify-vue';
-import aws_exports from './aws-exports';
+import awsmobile from './aws-exports.js';
 import {Auth} from "@aws-amplify/auth";
-Amplify.configure(aws_exports)
+Amplify.configure(awsmobile)
 
 Vue.use(Auth, AmplifyPlugin, AmplifyModules);
 
