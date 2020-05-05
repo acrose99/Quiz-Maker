@@ -9,7 +9,7 @@
             <h3>Confirm your Email and Password, you're almost done!</h3>
             <v-form id="confirm" v-model="valid" ref="form" lazy-validation>
                 <v-text-field v-model="username" :rules="emailRules" label="Email Address" required/>
-                <v-text-field v-model="password" :rules="passwordRules" label="Password" required/>
+                <v-text-field v-model="code" :rules="codeRules" label="Verification Code" required/>
                 <v-btn :disabled="!valid" @click="submit">Submit</v-btn>
             </v-form>
             <v-btn @click="resend">Resend Code</v-btn>
@@ -19,6 +19,7 @@
 
 <script>
     import SignupNav from "../components/SignupNav";
+    import {confirmSignUp, resendSignUp} from '@/utils/auth.js';
     export default {
         name: "SignUpConfirm",
         components: {
@@ -28,7 +29,7 @@
             return {
                 valid: false,
                 username: '',
-                password: '',
+                code: '',
             }
         },
         computed: {
@@ -49,10 +50,12 @@
             submit() {
                 if (this.$refs.form.validate()) {
                     console.log(`CONFIRM username: ${this.username}, code: ${this.code}`);
+                    confirmSignUp(this.username, this.code);  // Adding this line as well
                 }
             },
             resend() {
                 console.log(`RESEND username: ${this.username}`);
+                resendSignUp(this.username);  // Adding this line as well
             }
         },
     }

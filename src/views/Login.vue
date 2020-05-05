@@ -11,51 +11,73 @@
             </v-btn>
         </router-link>
         <h4 id="hint">Hint: It's username and password</h4>
-        <div id="login">
-            <label id="username">
-                <input type="text" name="username" v-model="input.username" placeholder="Username" />
-            </label>
-            <label id="password">
-                <input type="password" name="password" v-model="input.password" placeholder="Password" />
-            </label>
-            <button type="button" v-on:click="login()">Login</button>
+        <div class="sign-in">
+            <v-form v-model="valid" ref="form" lazy-validation>
+                <v-text-field v-model="username" :rules="emailRules" label="Email Address" required/>
+                <v-text-field
+                        v-model="password"
+                        :rules="[passwordRules.required, passwordRules.min]"
+                        :type="passwordVisible ? 'text' : 'password'"
+                        name="password"
+                        label="Password"
+                        hint="At least 8 characters"
+                        counter
+                        required/>
+                <v-btn :disabled="!valid" @click="submit">Submit</v-btn>
+            </v-form>
         </div>
+<!--        <div id="login">-->
+<!--            <label id="username">-->
+<!--                <input type="text" name="username" v-model="input.username" placeholder="Username" />-->
+<!--            </label>-->
+<!--            <label id="password">-->
+<!--                <input type="password" name="password" v-model="input.password" placeholder="Password" />-->
+<!--            </label>-->
+<!--            <button type="button" v-on:click="login()">Login</button>-->
+<!--        </div>-->
     </div>
 </template>
 
 <script>
+    import {signIn} from '@/utils/auth.js';
     export default {
-        name: 'Login',
+        name: "SignIn",
         data() {
             return {
-                input: {
-                    username: "",
-                    password: ""
-                }
+                valid: false,
+                username: '',
+                password: '',
+                passwordVisible: false,
             }
         },
-        methods: {
-            login() {
-                if(this.input.username !== "" && this.input.password !== "") {
-                    if(this.input.username === this.$parent.mockAccount.username && this.input.password === this.$parent.mockAccount.password) {
-                        this.$emit("authenticated", true);
-                        this.$router.replace({ name: "Home" });
-                    } else {
-                        // eslint-disable-next-line no-console
-                        window.alert("Bruh Moment, please enter a correct username and password");
-                        console.log("The username and / or password is incorrect");
-                    }
-                } else {
-                    // eslint-disable-next-line no-console
-                    console.log("A username and password must be present");
+        computed: {
+            emailRules() {
+                return [
+                    v => !!v || 'E-mail is required',
+                    v => /.+@.+/.test(v) || 'E-mail must be valid'
+                ]
+            },
+            passwordRules() {
+                return {
+                    required: value => !!value || 'Required.',
+                    min: v => v.length >= 8 || 'Min 8 characters',
+                    emailMatch: () => ('The email and password you entered don\'t match'),
                 }
-            }
-        }
+            },
+        },
+        methods: {
+            submit() {
+                if (this.$refs.form.validate()) {
+                    console.log(`SIGN IN username: ${this.username}, password: ${this.password}`);
+                    signIn(this.username, this.password);  // Adding this line as well
+                }
+            },
+        },
     }
 </script>
 
 <style scoped>
-    #login {
+    .sign-in {
         width: 500px;
         border: 5px solid #cf2d2d;;
         background-color: #FFFFFF;

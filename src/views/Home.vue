@@ -44,7 +44,9 @@
 </v-app>
 </template>
 <script>
+
 import { mapState } from 'vuex'
+import {signOut} from '@/utils/auth.js';
 
 export default {
     name: 'home',

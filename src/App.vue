@@ -1,9 +1,12 @@
 <template>
-
   <div id="app">
-    <router-view @authenticated="setAuthenticated" />
+    <div id="nav">
+      <router-view @authenticated="setAuthenticated" />
+    </div>
+    <router-view/>
   </div>
 </template>
+
 
 <script>
   export default {
@@ -11,23 +14,11 @@
     data() {
       return {
         authenticated: false,
-        mockAccount: {
-          username: "username",
-          password: "password"
-        }
       }
     },
     mounted() {
       if(!this.authenticated) {
-        this.$router.replace({ name: "Login" });
-      }
-    },
-    methods: {
-      setAuthenticated(status) {
-        this.authenticated = status;
-      },
-      logout() {
-        this.authenticated = false;
+        this.$router.replace({ name: "Signup" });
       }
     }
   }
